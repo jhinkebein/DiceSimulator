@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Roll Dice";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post">
+        @{
+
+            if (ViewBag.Total != 0) //Only shows rolls if user presses roll button
+            {
+                <div>
+                    <table>
+                        <tr>
+                            <td><img src="~/Content/@ViewBag.Die1" /></td>
+                            <td><img src="~/Content/@ViewBag.Die2" /></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else //Keeps roll and clear buttons in the same spot, created blank.png in photoshop
+            {
+                <div>
+                    <table>
+                        <tr>
+                            <td><img src="~/Content/blank.png" /></td> 
+                            <td><img src="~/Content/blank.png" /></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        }
+        <div>
+            <input value="Roll" type="submit" />
+            <input value="Clear" type="submit" formmethod="get" />
+        </div>
+    </form>
+}
+else
+{
+    <p>You are not authorized to view this page.</p>
+}
